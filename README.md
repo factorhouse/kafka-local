@@ -1,6 +1,7 @@
 # Run a local Kafka Cluster
 
-Docker Compose configuration to run Kafka locally.
+This repository contains configuration to run a SASL authenticated 3-node Kafka (v2.5.0) Cluster locally with Docker Compose.
+
 
 ```bash
 HOME=./ docker compose up
