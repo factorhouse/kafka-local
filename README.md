@@ -1,4 +1,4 @@
-# Run a local Kafka Cluster
+# Run a local SASL authenticated Kafka Cluster with Docker Compose
 
 This repository contains configuration to run a locak, SASL authenticated 3-node Kafka (v2.5.0) Cluster.
 
