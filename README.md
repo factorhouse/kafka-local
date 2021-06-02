@@ -48,4 +48,40 @@ HOME=./ docker compose down
  ⠿ Container kafka-local_kafka-2_1  Removed                                                 0.0s
  ⠿ Container zookeeper              Removed                                                 0.0s
  ⠿ Network kafka-local_default      Removed                                                 2.4s
- ``` 
+```
+ 
+## Bootstrap Configuration
+
+You can connect to this cluster directly on localhost, or from another docker container by specifying the network.
+
+## Localhost Bootstrap
+
+```
+bootstrap: 127.0.0.1:9092,127.0.0.1:9093,127.0.0.1:9094
+```
+
+## Docker Network Bootstrap
+
+To connect a process within a Docker container to the cluster, specify the network:
+ 
+```
+docker run --network=kafka-local_default ...
+```
+
+Then use:
+
+```
+bootstrap: kafka-1:19092,kafka-2:19093,kafka-3:19094 
+```
+
+## Client Configuration
+
+This Kafka cluster requires clients connect with SASL authentication (see: [docker/kafka_jaas.conf](docker/kafka_jaas.conf))
+
+To connect a client to this client use the following connection settings:
+
+```
+security.protocol: SASL_PLAINTEXT
+sasl.metchanism:   PLAIN
+sasl.jaas.config:  org.apache.kafka.common.security.plain.PlainLoginModule required username="client" password="client-secret";
+```
