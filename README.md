@@ -1,10 +1,10 @@
 # Run a local SASL Kafka Cluster with Docker Compose
 
-This repository contains configuration to run a locak, SASL authenticated 3-node Kafka (v2.5.0) Cluster.
+This repository contains configuration to run a local, SASL authenticated 3-node Kafka (v2.5.0) Cluster.
 
 ## Prerequisites
 
-Our local cluster runs with Docker Compose, so you will need to [install Docker](https://www.docker.com/).
+The local cluster runs with Docker Compose, so you will need to [install Docker](https://www.docker.com/).
 
 ## Cluster Actions
 
