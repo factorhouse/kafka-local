@@ -82,6 +82,6 @@ To connect a client to this client use the following connection settings:
 
 ```
 security.protocol: SASL_PLAINTEXT
-sasl.metchanism:   PLAIN
+sasl.mechanism:   PLAIN
 sasl.jaas.config:  org.apache.kafka.common.security.plain.PlainLoginModule required username="client" password="client-secret";
 ```
