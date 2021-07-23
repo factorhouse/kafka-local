@@ -8,10 +8,10 @@ The local cluster runs with Docker Compose, so you will need to [install Docker]
 
 ## (Optional) Run kPow
 
-Follow these instructions then get a [free trial license](https://kpow.io/try) and start kPow:
+Follow these instructions then get a [free trial license](https://kpow.io/try), edit [docker/kpow.env](docker/kpow.env), and start kPow:
 
 ```
-docker run --network=kafka-local_default -p 3000:3000 -m2G --env-file ./docker/kpow.env operatr/kpow:80
+docker run --network=kafka-local_default -p 3000:3000 -m2G --env-file ./docker/kpow.env operatr/kpow:latest
 ```
 
 ## Cluster Actions
