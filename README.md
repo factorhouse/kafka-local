@@ -6,6 +6,14 @@ This repository contains configuration to run a local, SASL authenticated 3-node
 
 The local cluster runs with Docker Compose, so you will need to [install Docker](https://www.docker.com/).
 
+## (Optional) Run kPow
+
+Follow these instructions then get a [free trial license](https://kpow.io/try) and start kPow:
+
+```
+docker run --network=kafka-local_default -p 3000:3000 -m2G --env-file ./docker/kpow.env operatr/kpow:80
+```
+
 ## Cluster Actions
 
 ### Start the Kafka cluster
