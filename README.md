@@ -1,90 +1,178 @@
-# Run a local SASL Kafka Cluster with Docker Compose
+# Run a local Kafka cluster with Docker Compose
 
-This repository contains configuration to run a local, SASL authenticated 3-node Kafka (v2.5.0) Cluster.
+### Versions
+
+| Confluent Container Version   | Kafka Equivalent               |
+|-------------------------------|--------------------------------|
+| `confluentinc/cp-kafka:7.5.3` | `org.apache.kafka/kafka:3.5.2` |
+
+### Guide
+
+* [Introduction](#introduction)
+* [Prequisites](#prerequisites)
+* [Run Kpow Community Edition (optional)](#run-kpow-community-edition-optional)
+* [Run a simple Kafka cluster (no authentication)](#run-a-simple-kafka-cluster-no-authentication)
+  * [Start the simple cluster](#start-the-simple-kafka-cluster)
+  * [Stop the simple cluster](#stop-the-simple-kafka-cluster)
+  * [Access the simple cluster](#access-the-simple-kafka-cluster)
+    * [Localhost bootstrap](#localhost-bootstrap)
+    * [Docker host bootstrap](#docker-host-bootstrap)
+    * [host.docker.interanl bootstrap](#hostdockerinternal-bootstrap)
+* [Run a SASL Kafka cluster (with authentication)](#run-a-sasl-kafka-cluster-with-authentication)
+  * [Client authentication](#client-authentication)
+
+## Introduction
+
+This repository contains docker compose configuration to run a local Kafka cluster with Docker Compose.
+
+We use similar configuration for local development of our Kafka UI and API product, [Kpow for Apache Kafka](https://factorhouse.io/kpow).
+
+Two types of Kafka Cluster are supported, simple (not authentication) and SASL authenticated. 
+
+See [kpow-local](https://github.com/factorhouse/kpow-local) for a more complex local configuration consisting of Kpow, Kafka, Schema, Connect, and ksqlDB.
 
 ## Prerequisites
 
 The local cluster runs with Docker Compose, so you will need to [install Docker](https://www.docker.com/).
 
-## (Optional) Run kPow
+Once Docker is installed, clone this repository and run the following commands from the base path.
 
-Follow these instructions then get a [free trial license](https://kpow.io/try), enter it into [docker/kpow.env](docker/kpow.env), and start kPow:
+## Run Kpow Community Edition (Optional)
+
+The community edition of Kpow for Apache Kafka is free to use by individuals and organisations.
+
+You can check it out if you like, but the configuration in this repository doesn't require Kpow in any way.
+
+![Kpow UI](/resources/img/kpow-overview.png)
+
+Start a local Kafka cluster with the configuration in this repository then:
+
+* Get a [free Kpow Community license](https://factorhouse.io/kpow/community/)
+* Enter the license details into [resoources/kpow/no-auth.env](resources/kpow/no-auth.env) or [resoources/kpow/sasl-auth.env](resources/kpow/sasl-auth.env)
+* Start Kpow Community Edition:
+
+**Start Kpow Community Edition with No Auth Kafka Cluster**
 
 ```
-docker run --network=kafka-local_default -p 3000:3000 -m2G --env-file ./docker/kpow.env operatr/kpow:latest
+docker run --network=kafka-local_default -p 3000:3000 -m2G --env-file ./resources/kpow/no-auth.env factorhouse/kpow-ce:latest
 ```
 
-## Cluster Actions
+**Start Kpow Community Edition with SASL Auth Kafka Cluster**
 
-### Start the Kafka cluster
+```
+docker run --network=kafka-local_default -p 3000:3000 -m2G --env-file ./resources/kpow/sasl-auth.env factorhouse/kpow-ce:latest
+```
+
+* Navigate to http://localhost:3000 (the UI might look empty until you start creating topics and writing data)
+
+## Run a simple Kafka cluster (no authentication)
+
+### Start the simple Kafka cluster
+
+This command starts a Kafka Cluster that does not require clients to authenticate.
 
 ```bash
-HOME=./ docker compose up
+docker compose -f docker-compose-no-auth.yml up
+```
 
-[+] Running 5/2
- ⠿ Network kafka-local_default      Created                                                 3.3s
- ⠿ Container zookeeper              Created                                                 0.1s
- ⠿ Container kafka-local_kafka-2_1  Created                                                 0.1s
- ⠿ Container kafka-local_kafka-3_1  Created                                                 0.1s
- ⠿ Container kafka-local_kafka-1_1  Created                                                 0.1s
-Attaching to kafka-1_1, kafka-2_1, kafka-3_1, zookeeper
+```
+[+] Running 5/5
+ ✔ Network kafka-local_default      Created0.0s
+ ✔ Container zookeeper              Created0.0s
+ ✔ Container kafka-local-kafka-3-1  Created0.0s
+ ✔ Container kafka-local-kafka-1-1  Created0.0s
+ ✔ Container kafka-local-kafka-2-1  Created0.0s
+Attaching to kafka-1-1, kafka-2-1, kafka-3-1, zookeeper
 zookeeper  | ===> User
-zookeeper  | uid=0(root) gid=0(root) groups=0(root)
+zookeeper  | uid=1000(appuser) gid=1000(appuser) groups=1000(appuser)
 zookeeper  | ===> Configuring ...
 ```
 
-### Stop the Kafka cluster
+### Stop the simple Kafka cluster
 
 First, hit ctrl-c in the terminal running the Docker Compose process.
 
 ```bash
 ^C
 Gracefully stopping... (press Ctrl+C again to force)
-[+] Running 1/3
- ⠇ Container kafka-local_kafka-3_1  Stopping                                                10.9s
- ⠇ Container kafka-local_kafka-1_1  Stopping                                                10.9s
- ⠿ Container kafka-local_kafka-2_1  Stopped                                                 5.1s
+[+] Stopping 4/4
+ ✔ Container kafka-local-kafka-1-1  Stopped5.8s
+ ✔ Container kafka-local-kafka-2-1  Stopped0.7s
+ ✔ Container kafka-local-kafka-3-1  Stopped0.7s
+ ✔ Container zookeeper              Stopped0.5s
+canceled
 ```
 
 Then stop/clear the Docker Compose resources
 
 ```bash
-HOME=./ docker compose down
-[+] Running 5/5
- ⠿ Container kafka-local_kafka-1_1  Removed                                                 0.0s
- ⠿ Container kafka-local_kafka-3_1  Removed                                                 0.0s
- ⠿ Container kafka-local_kafka-2_1  Removed                                                 0.0s
- ⠿ Container zookeeper              Removed                                                 0.0s
- ⠿ Network kafka-local_default      Removed                                                 2.4s
+❯ docker compose -f docker-compose-no-auth.yml down
+
+[+] Running 5/0
+ ✔ Container kafka-local-kafka-1-1  Removed                                                                                                                                                                    0.0s
+ ✔ Container kafka-local-kafka-2-1  Removed                                                                                                                                                                    0.0s
+ ✔ Container kafka-local-kafka-3-1  Removed                                                                                                                                                                    0.0s
+ ✔ Container zookeeper              Removed                                                                                                                                                                    0.0s
+ ✔ Network kafka-local_default      Removed
 ```
  
-## Bootstrap Configuration
+### Access the simple Kafka cluster
 
-You can connect to this cluster directly on localhost, or from another docker container by specifying the network.
+To access this cluster, you can:
 
-## Localhost Bootstrap
+1. Connect to the bootstrap on localhost / 127.0.0.1 (most likely non-docker applications)
+2. Connect to the bootstrap on the Docker defined hosts (kakfa-1, kafka-2, kafka-3)
+3. Connect to the bootstrap using `host.docker.internal` which is similar to (1)
+
+#### Localhost bootstrap
+
+Applications that are external to Docker can access the Kafka cluster via the Localhost bootstrap.
 
 ```
 bootstrap: 127.0.0.1:9092,127.0.0.1:9093,127.0.0.1:9094
 ```
 
-## Docker Network Bootstrap
+#### Docker host bootstrap
 
-To connect a process within a Docker container to the cluster, specify the network:
+Containerized applications can connect to the Kafka cluster via the Docker Host bootstrap.
+
+These docker hosts (kakfa-1, kafka-2, kafka-3) are defined within the comoose.yml.
+
+When starting your Docker container, specify that it should share the `kafka-local_default` network.
  
 ```
 docker run --network=kafka-local_default ...
 ```
 
-Then use:
+Then connect to the hosts that are running on that network
 
 ```
 bootstrap: kafka-1:19092,kafka-2:19093,kafka-3:19094 
 ```
 
-## Client Configuration
+#### host.docker.internal bootstrap
 
-This Kafka cluster requires clients connect with SASL authentication (see: [docker/kafka_jaas.conf](docker/kafka_jaas.conf))
+This is a good trick for running a docker container that connects back to a port open on the host machine.
+
+`host.docker.internal` effective routes back to localhost.
+
+```
+bootstrap: host.docker.internal:9092,host.docker.internal:9093,host.docker.internal:9094 
+```
+
+## Run a SASL Kafka cluster (with authentication)
+
+Use the `docker-compose-sasl-auth.yml` configuration to run a SASL authenticated cluster:
+
+```
+docker compose -f docker-compose-sasl-auth.yml up
+```
+
+Bootstrap configuration is the same as the simple cluster however clients must authenticate to connect. 
+
+Authentication configuration is specified in [resources/docker/kafka_jaas.conf](resources/docker/kafka_jaas.conf).
+
+### Client authentication
 
 To connect a client to this client use the following connection settings:
 
