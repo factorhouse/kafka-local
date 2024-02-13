@@ -14,7 +14,7 @@ The local cluster runs with Docker Compose, so you will need to [install Docker]
 
 ### Start the Kafka cluster
 
-This command starts a Kafka Cluster that does not require clients to authenticate to connect via the bootstrap URL.
+This command starts a Kafka Cluster that does not require clients to authenticate.
 
 ```bash
 ❯ docker compose -f docker-compose-no-auth.yml up
