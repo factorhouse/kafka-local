@@ -1,20 +1,26 @@
 # Run a local Kafka cluster with Docker Compose
 
-This repository contains docker compose configuration to run a local Kafka cluster with Docker Compose.
-
-We use similar configuration for local development of our Kafka UI and API product, [Kpow for Apache Kafka](https://factorhouse.io/kpow).
-
-## Confluent / Kafka Versions
+### Versions
 
 | Confluent Container Version   | Kafka Equivalent               |
 |-------------------------------|--------------------------------|
 | `confluentinc/cp-kafka:7.5.3` | `org.apache.kafka/kafka:3.5.2` |
 
-## Kafka Cluster Authentication
+## Introduction
+
+This repository contains docker compose configuration to run a local Kafka cluster with Docker Compose.
+
+We use similar configuration for local development of our Kafka UI and API product, [Kpow for Apache Kafka](https://factorhouse.io/kpow).
 
 Two types of Kafka Cluster are supported, simple (not authentication) and SASL authenticated. 
 
 See [kpow-local](https://github.com/factorhouse/kpow-local) for a more complex local configuration consisting of Kpow, Kafka, Schema, Connect, and ksqlDB.
+
+## Prerequisites
+
+The local cluster runs with Docker Compose, so you will need to [install Docker](https://www.docker.com/).
+
+Once Docker is installed, clone this repository and run the following commands from the base path.
 
 ## Run Kpow Community Edition (Optional)
 
@@ -39,12 +45,6 @@ docker run --network=kafka-local_default -p 3000:3000 -m2G --env-file ./resource
 ```
 
 * Navigate to http://localhost:3000 (the Kpow UI might look empty until you start creating topics and writing data)
-
-## Prerequisites
-
-The local cluster runs with Docker Compose, so you will need to [install Docker](https://www.docker.com/).
-
-Once Docker is installed, clone this repository and run the following commands from the base path.
 
 ## Simple Kafka Cluster (No Authentication)
 
