@@ -10,6 +10,9 @@
 
 * [Introduction](#introduction)
 * [Prequisites](#prerequisites)
+  * [Install Docker](#install-docker)
+  * [Clone this repository](#clone-this-repository)
+  * [Change into the repository directory](#change-into-the-repository-directory)
 * [Run Kpow Community Edition (optional)](#run-kpow-community-edition-optional)
 * [Run a simple Kafka cluster (no authentication)](#run-a-simple-kafka-cluster-no-authentication)
   * [Start the Kafka cluster](#start-the-kafka-cluster)
@@ -33,9 +36,23 @@ See [kpow-local](https://github.com/factorhouse/kpow-local) for a more complex l
 
 ## Prerequisites
 
+### Install Docker
+
 The local cluster runs with Docker Compose, so you will need to [install Docker](https://www.docker.com/).
 
 Once Docker is installed, clone this repository and run the following commands from the base path.
+
+### Clone this repository
+
+```
+git clone git@github.com:factorhouse/kafka-local.git
+```
+
+### Change into the repository directory
+
+```
+cd kafka-local
+```
 
 ## Run Kpow Community Edition (Optional)
 
