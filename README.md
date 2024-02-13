@@ -6,16 +6,20 @@
 |-------------------------------|--------------------------------|
 | `confluentinc/cp-kafka:7.5.3` | `org.apache.kafka/kafka:3.5.2` |
 
+### Guide
+
 * [Introduction](#introduction)
 * [Prequisites](#prerequisites)
 * [Run Kpow Community Edition (optional)](#run-kpow-community-edition-optional)
-* [Run a simple Kafka cluster (no authentication)](#simple-kafka-cluster-no-authentication)
+* [Run a simple Kafka cluster (no authentication)](#run-a-simple-kafka-cluster-no-authentication)
   * [Start the simple cluster](#start-the-simple-kafka-cluster)
   * [Stop the simple cluster](#stop-the-simple-kafka-cluster)
   * [Access the simple cluster](#access-the-simple-kafka-cluster)
     * [Localhost bootstrap](#localhost-bootstrap)
     * [Docker host bootstrap](#docker-host-bootstrap)
     * [host.docker.interanl bootstrap](#hostdockerinternal-bootstrap)
+* [Run a SASL Kafka cluster (with authentication)](#run-a-sasl-kafka-cluster-with-authentication)
+  * [Client authentication](#client-authentication)
 
 ## Introduction
 
@@ -57,7 +61,7 @@ docker run --network=kafka-local_default -p 3000:3000 -m2G --env-file ./resource
 
 * Navigate to http://localhost:3000 (the Kpow UI might look empty until you start creating topics and writing data)
 
-## Run a simple Kafka Cluster (No Authentication)
+## Run a simple Kafka cluster (no authentication)
 
 ### Start the simple Kafka cluster
 
@@ -108,7 +112,7 @@ Then stop/clear the Docker Compose resources
  ✔ Network kafka-local_default      Removed
 ```
  
-### Access the simple Kafka Cluster
+### Access the simple Kafka cluster
 
 To access this cluster, you can:
 
@@ -116,7 +120,7 @@ To access this cluster, you can:
 2. Connect to the bootstrap on the Docker defined hosts (kakfa-1, kafka-2, kafka-3)
 3. Connect to the bootstrap using `host.docker.internal` which is similar to (1)
 
-#### Localhost Bootstrap
+#### Localhost bootstrap
 
 Applications that are external to Docker can access the Kafka cluster via the Localhost bootstrap.
 
@@ -124,7 +128,7 @@ Applications that are external to Docker can access the Kafka cluster via the Lo
 bootstrap: 127.0.0.1:9092,127.0.0.1:9093,127.0.0.1:9094
 ```
 
-#### Docker Host Bootstrap
+#### Docker host bootstrap
 
 Containerized applications can connect to the Kafka cluster via the Docker Host bootstrap.
 
@@ -142,7 +146,7 @@ Then connect to the hosts that are running on that network
 bootstrap: kafka-1:19092,kafka-2:19093,kafka-3:19094 
 ```
 
-#### host.docker.internal Bootstrap
+#### host.docker.internal bootstrap
 
 This is a good trick for running a docker container that connects back to a port open on the host machine.
 
@@ -152,9 +156,19 @@ This is a good trick for running a docker container that connects back to a port
 bootstrap: host.docker.internal:9092,host.docker.internal:9093,host.docker.internal:9094 
 ```
 
-### Client Authentication
+## Run a SASL Kafka cluster (with authentication)
 
-This Kafka cluster requires clients connect with SASL authentication (see: [resources/docker/kafka_jaas.conf](resources/docker/kafka_jaas.conf))
+Use the `docker-compose-sasl-auth.yml` configuration to run a SASL authenticated cluster:
+
+```
+docker compose -f docker-compose-sasl-auth.yml up
+```
+
+Bootstrap configuration is the same as the simple cluster however clients must authenticate to connect. 
+
+Authentication configuration is specified in [resources/docker/kafka_jaas.conf](resources/docker/kafka_jaas.conf).
+
+### Client authentication
 
 To connect a client to this client use the following connection settings:
 
