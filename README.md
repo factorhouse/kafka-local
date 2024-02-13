@@ -65,31 +65,49 @@ Then stop/clear the Docker Compose resources
  
 ### Access the Kafka Cluster
 
-You can connect to this cluster directly on localhost, or from another docker container by specifying the network.
+To access this cluster, you can:
+
+1. Connect to the bootstrap on localhost / 127.0.0.1 (most likely non-docker applications)
+2. Connect to the bootstrap on the Docker defined internal hosts (kakfa-1, kafka-2, kafka-3)
+3. Connect to the bootstrap using `host.docker.internal` which is similar to (1)
 
 #### Localhost Bootstrap
+
+Applications that are external to Docker can access the Kafka cluster via the Localhost bootstrap.
 
 ```
 bootstrap: 127.0.0.1:9092,127.0.0.1:9093,127.0.0.1:9094
 ```
 
-#### Docker Network Bootstrap
+#### Docker Internal Host Bootstrap
 
-To connect a process within a Docker container to the cluster, specify the network:
+Containerized applications can connect to the Kafka cluster via the Docker Internal Host bootstrap.
+
+When starting your Docker container, specify that it should share the `kafka-local_default` network.
  
 ```
 docker run --network=kafka-local_default ...
 ```
 
-Then use:
+Then connect to the internal hosts that are running on that network
 
 ```
 bootstrap: kafka-1:19092,kafka-2:19093,kafka-3:19094 
 ```
 
+#### `host.docker.internal` Bootstrap
+
+This is a good trick for running a docker container that connects back to a port open on the host machine.
+
+`host.docker.internal` effective routes back to localhost.
+
+```
+bootstrap: host.docker.internal:9092,host.docker.internal:9093,host.docker.internal:9094 
+```
+
 ## Client Authentication
 
-This Kafka cluster requires clients connect with SASL authentication (see: [docker/kafka_jaas.conf](docker/kafka_jaas.conf))
+This Kafka cluster requires clients connect with SASL authentication (see: [resources/docker/kafka_jaas.conf](resources/docker/kafka_jaas.conf))
 
 To connect a client to this client use the following connection settings:
 
@@ -104,7 +122,7 @@ sasl.jaas.config:  org.apache.kafka.common.security.plain.PlainLoginModule requi
 Start a local Kafka cluster with the configuration in this repository then:
 
 * Get a [free Kpow Community license](https://factorhouse.io/kpow/community/)
-* Enter the license details into [docker/kpow.env](docker/kpow.env)
+* Enter the license details into [resoources/kpow/no-auth.env](resources/kpow/not-auth.env) or [resoources/kpow/sasl-auth.env](resources/kpow/sasl-auth.env)
 * Start Kpow Community Edition:
 
 **Start Kpow Community Edition with No Auth Kafka Cluster**
