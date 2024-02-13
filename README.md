@@ -1,20 +1,42 @@
-# Run a local SASL Kafka Cluster with Docker Compose
+# Run local Kafka resources with Docker Compose
 
-This repository contains configuration to run a local, SASL authenticated 3-node Kafka (v2.5.0) Cluster.
+This repository contains docker compose configuration to run local Kafka resources with Docker Compose.
+
+We use similar configuration for local development of our Kafka UI and API product, [Kpow for Apache Kafka](https://factorhouse.io/kpow).
+
+This repository uses `confluentinc/cp-kafka:7.5.3` equivalent to `org.apache.kafka/kafka:3.5.2`.
 
 ## Prerequisites
 
 The local cluster runs with Docker Compose, so you will need to [install Docker](https://www.docker.com/).
 
-## (Optional) Run kPow
+## (Optional) Run with Kpow Community Edition
 
-Follow these instructions then get a [free trial license](https://kpow.io/try), enter it into [docker/kpow.env](docker/kpow.env), and start kPow:
+Start a local Kafka cluster with the configuration in this repository then:
+
+* Get a [free Kpow Community license](https://factorhouse.io/kpow/community/) 
+* Enter the license details into [docker/kpow.env](docker/kpow.env)
+* Start Kpow Community Edition:
+
+**Start Kpow Community Edition with No Auth Kafka Cluster**
 
 ```
-docker run --network=kafka-local_default -p 3000:3000 -m2G --env-file ./docker/kpow.env operatr/kpow:latest
+docker run --network=kafka-local_default -p 3000:3000 -m2G --env-file ./resources/kpow/no-auth.env factorhouse/kpow-ce:latest
 ```
 
-## Cluster Actions
+**Start Kpow Community Edition with SASL Auth Kafka Cluster**
+
+```
+docker run --network=kafka-local_default -p 3000:3000 -m2G --env-file ./resources/kpow/no-auth.env factorhouse/kpow-ce:latest
+```
+
+* Navigate to http://localhost:3000
+
+(Your dashboard might look quite empty until you start creating topics and writing data..)
+
+![Kpow UI](/resources/img/kpow-overview.png)
+
+## Kafka Cluster Actions
 
 ### Start the Kafka cluster
 
