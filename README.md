@@ -6,6 +6,11 @@
 |-------------------------------|--------------------------------|
 | `confluentinc/cp-kafka:7.5.3` | `org.apache.kafka/kafka:3.5.2` |
 
+* [Introduction](#introduction)
+* [Prequisites](#prerequisites)
+* [Run Kpow Community Edition (Optional)](#run-kpow-community-edition-optional)
+  * [Simple Kafka Cluster (No Authentication)](#simple-kafka-cluster-no-authentication)
+
 ## Introduction
 
 This repository contains docker compose configuration to run a local Kafka cluster with Docker Compose.
