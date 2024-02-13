@@ -39,7 +39,9 @@ Once Docker is installed, clone this repository and run the following commands f
 
 ## Run Kpow Community Edition (Optional)
 
-The community edition of Kpow for Apache Kafka is free to use by individuals and organisations, you should check it out..
+The community edition of Kpow for Apache Kafka is free to use by individuals and organisations.
+
+You can check it out if you like, but the configuration in this repository doesn't require Kpow in any way.
 
 ![Kpow UI](/resources/img/kpow-overview.png)
 
