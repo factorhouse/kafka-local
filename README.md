@@ -4,10 +4,11 @@ This repository contains docker compose configuration to run a local Kafka clust
 
 We use similar configuration for local development of our Kafka UI and API product, [Kpow for Apache Kafka](https://factorhouse.io/kpow).
 
-Currently configured container / kafka versions:
+## Confluent / Kafka Versions
 
-**Confluent Version:** `confluentinc/cp-kafka:7.5.3`
-**Kafka Version**: `org.apache.kafka/kafka:3.5.2`
+| Confluent Container Version   | Kafka Equivalent               |
+|-------------------------------|--------------------------------|
+| `confluentinc/cp-kafka:7.5.3` | `org.apache.kafka/kafka:3.5.2` |
 
 ---
 
