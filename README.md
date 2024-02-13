@@ -10,7 +10,7 @@ We use similar configuration for local development of our Kafka UI and API produ
 |-------------------------------|--------------------------------|
 | `confluentinc/cp-kafka:7.5.3` | `org.apache.kafka/kafka:3.5.2` |
 
----
+## Kafka Cluster Authentication
 
 Two types of Kafka Cluster are supported, simple (not authentication) and SASL authenticated. 
 
