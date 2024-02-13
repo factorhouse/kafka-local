@@ -63,17 +63,17 @@ Then stop/clear the Docker Compose resources
  ✔ Network kafka-local_default      Removed
 ```
  
-## Bootstrap Configuration
+### Access the Kafka Cluster
 
 You can connect to this cluster directly on localhost, or from another docker container by specifying the network.
 
-## Localhost Bootstrap
+#### Localhost Bootstrap
 
 ```
 bootstrap: 127.0.0.1:9092,127.0.0.1:9093,127.0.0.1:9094
 ```
 
-## Docker Network Bootstrap
+#### Docker Network Bootstrap
 
 To connect a process within a Docker container to the cluster, specify the network:
  
@@ -87,7 +87,7 @@ Then use:
 bootstrap: kafka-1:19092,kafka-2:19093,kafka-3:19094 
 ```
 
-## Client Configuration
+## Client Authentication
 
 This Kafka cluster requires clients connect with SASL authentication (see: [docker/kafka_jaas.conf](docker/kafka_jaas.conf))
 
