@@ -44,7 +44,7 @@ Once Docker is installed, clone this repository and run the following commands f
 Start a local Kafka cluster with the configuration in this repository then:
 
 * Get a [free Kpow Community license](https://factorhouse.io/kpow/community/)
-* Enter the license details into [resoources/kpow/no-auth.env](resources/kpow/not-auth.env) or [resoources/kpow/sasl-auth.env](resources/kpow/sasl-auth.env)
+* Enter the license details into [resoources/kpow/no-auth.env](resources/kpow/no-auth.env) or [resoources/kpow/sasl-auth.env](resources/kpow/sasl-auth.env)
 * Start Kpow Community Edition:
 
 **Start Kpow Community Edition with No Auth Kafka Cluster**
