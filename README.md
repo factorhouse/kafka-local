@@ -9,10 +9,13 @@
 * [Introduction](#introduction)
 * [Prequisites](#prerequisites)
 * [Run Kpow Community Edition (optional)](#run-kpow-community-edition-optional)
-* [Simple Kafka cluster (no authentication)](#simple-kafka-cluster-no-authentication)
+* [Run a simple Kafka cluster (no authentication)](#simple-kafka-cluster-no-authentication)
   * [Start the simple cluster](#start-the-simple-kafka-cluster)
   * [Stop the simple cluster](#stop-the-simple-kafka-cluster)
   * [Access the simple cluster](#access-the-simple-kafka-cluster)
+    * [Localhost bootstrap](#localhost-bootstrap)
+    * [Docker host bootstrap](#docker-host-bootstrap)
+    * [host.docker.interanl bootstrap](#hostdockerinternal-bootstrap)
 
 ## Introduction
 
@@ -54,7 +57,7 @@ docker run --network=kafka-local_default -p 3000:3000 -m2G --env-file ./resource
 
 * Navigate to http://localhost:3000 (the Kpow UI might look empty until you start creating topics and writing data)
 
-## Simple Kafka Cluster (No Authentication)
+## Run a simple Kafka Cluster (No Authentication)
 
 ### Start the simple Kafka cluster
 
