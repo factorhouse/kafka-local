@@ -10,6 +10,8 @@ This repository uses `confluentinc/cp-kafka:7.5.3` equivalent to `org.apache.kaf
 
 The local cluster runs with Docker Compose, so you will need to [install Docker](https://www.docker.com/).
 
+Once Docker is installed, clone this repository and run the following commands from the base path.
+
 ## Simple Kafka Cluster (No Authentication)
 
 ### Start the Kafka cluster
@@ -17,8 +19,10 @@ The local cluster runs with Docker Compose, so you will need to [install Docker]
 This command starts a Kafka Cluster that does not require clients to authenticate.
 
 ```bash
-❯ docker compose -f docker-compose-no-auth.yml up
+docker compose -f docker-compose-no-auth.yml up
+```
 
+```
 [+] Running 5/5
  ✔ Network kafka-local_default      Created0.0s
  ✔ Container zookeeper              Created0.0s
