@@ -59,7 +59,7 @@ docker run --network=kafka-local_default -p 3000:3000 -m2G --env-file ./resource
 docker run --network=kafka-local_default -p 3000:3000 -m2G --env-file ./resources/kpow/sasl-auth.env factorhouse/kpow-ce:latest
 ```
 
-* Navigate to http://localhost:3000 (the Kpow UI might look empty until you start creating topics and writing data)
+* Navigate to http://localhost:3000 (the UI might look empty until you start creating topics and writing data)
 
 ## Run a simple Kafka cluster (no authentication)
 
