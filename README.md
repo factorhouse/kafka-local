@@ -23,6 +23,7 @@
     * [host.docker.interanl bootstrap](#hostdockerinternal-bootstrap)
 * [Run a SASL Kafka cluster (with authentication)](#run-a-sasl-kafka-cluster-with-authentication)
   * [Client authentication](#client-authentication)
+* [License](#license) 
 
 ## Introduction
 
@@ -200,3 +201,9 @@ security.protocol: SASL_PLAINTEXT
 sasl.mechanism:    PLAIN
 sasl.jaas.config:  org.apache.kafka.common.security.plain.PlainLoginModule required username="client" password="client-secret";
 ```
+
+## License
+
+This repository is released under the Apache 2.0 License.
+
+Copyright © Factor House.
