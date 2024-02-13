@@ -27,7 +27,7 @@ This repository contains docker compose configuration to run a local Kafka clust
 
 We use similar configuration for local development of our Kafka UI and API product, [Kpow for Apache Kafka](https://factorhouse.io/kpow).
 
-Two types of Kafka Cluster are supported, simple (not authentication) and SASL authenticated. 
+Two types of Kafka Cluster are supported, simple (no authentication) and SASL authenticated. 
 
 See [kpow-local](https://github.com/factorhouse/kpow-local) for a more complex local configuration consisting of Kpow, Kafka, Schema, Connect, and ksqlDB.
 
