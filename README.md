@@ -39,6 +39,8 @@ Once Docker is installed, clone this repository and run the following commands f
 
 ## Run Kpow Community Edition (Optional)
 
+The community edition of Kpow for Apache Kafka is free to use by individuals and organisations, you should check it out..
+
 ![Kpow UI](/resources/img/kpow-overview.png)
 
 Start a local Kafka cluster with the configuration in this repository then:
