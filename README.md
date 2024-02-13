@@ -68,7 +68,7 @@ Then stop/clear the Docker Compose resources
 To access this cluster, you can:
 
 1. Connect to the bootstrap on localhost / 127.0.0.1 (most likely non-docker applications)
-2. Connect to the bootstrap on the Docker defined internal hosts (kakfa-1, kafka-2, kafka-3)
+2. Connect to the bootstrap on the Docker defined hosts (kakfa-1, kafka-2, kafka-3)
 3. Connect to the bootstrap using `host.docker.internal` which is similar to (1)
 
 #### Localhost Bootstrap
@@ -79,9 +79,11 @@ Applications that are external to Docker can access the Kafka cluster via the Lo
 bootstrap: 127.0.0.1:9092,127.0.0.1:9093,127.0.0.1:9094
 ```
 
-#### Docker Internal Host Bootstrap
+#### Docker Host Bootstrap
 
-Containerized applications can connect to the Kafka cluster via the Docker Internal Host bootstrap.
+Containerized applications can connect to the Kafka cluster via the Docker Host bootstrap.
+
+These docker hosts (kakfa-1, kafka-2, kafka-3) are defined within the comoose.yml.
 
 When starting your Docker container, specify that it should share the `kafka-local_default` network.
  
@@ -89,13 +91,13 @@ When starting your Docker container, specify that it should share the `kafka-loc
 docker run --network=kafka-local_default ...
 ```
 
-Then connect to the internal hosts that are running on that network
+Then connect to the hosts that are running on that network
 
 ```
 bootstrap: kafka-1:19092,kafka-2:19093,kafka-3:19094 
 ```
 
-#### `host.docker.internal` Bootstrap
+#### host.docker.internal Bootstrap
 
 This is a good trick for running a docker container that connects back to a port open on the host machine.
 
