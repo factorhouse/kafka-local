@@ -12,9 +12,9 @@
 * [Prequisites](#prerequisites)
 * [Run Kpow Community Edition (optional)](#run-kpow-community-edition-optional)
 * [Run a simple Kafka cluster (no authentication)](#run-a-simple-kafka-cluster-no-authentication)
-  * [Start the simple cluster](#start-the-simple-kafka-cluster)
-  * [Stop the simple cluster](#stop-the-simple-kafka-cluster)
-  * [Access the simple cluster](#access-the-simple-kafka-cluster)
+  * [Start the cluster](#start-the-kafka-cluster)
+  * [Stop the cluster](#stop-the-kafka-cluster)
+  * [Access the cluster](#access-the-kafka-cluster)
     * [Localhost bootstrap](#localhost-bootstrap)
     * [Docker host bootstrap](#docker-host-bootstrap)
     * [host.docker.interanl bootstrap](#hostdockerinternal-bootstrap)
@@ -67,7 +67,7 @@ docker run --network=kafka-local_default -p 3000:3000 -m2G --env-file ./resource
 
 ## Run a simple Kafka cluster (no authentication)
 
-### Start the simple Kafka cluster
+### Start the Kafka cluster
 
 This command starts a Kafka Cluster that does not require clients to authenticate.
 
@@ -88,7 +88,7 @@ zookeeper  | uid=1000(appuser) gid=1000(appuser) groups=1000(appuser)
 zookeeper  | ===> Configuring ...
 ```
 
-### Stop the simple Kafka cluster
+### Stop the Kafka cluster
 
 First, hit ctrl-c in the terminal running the Docker Compose process.
 
@@ -116,7 +116,7 @@ Then stop/clear the Docker Compose resources
  ✔ Network kafka-local_default      Removed
 ```
  
-### Access the simple Kafka cluster
+### Access the Kafka cluster
 
 To access this cluster, you can:
 
