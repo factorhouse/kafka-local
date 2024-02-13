@@ -8,6 +8,8 @@ This repository uses `confluentinc/cp-kafka:7.5.3` equivalent to `org.apache.kaf
 
 ## Run Kpow Community Edition (Optional)
 
+![Kpow UI](/resources/img/kpow-overview.png)
+
 Start a local Kafka cluster with the configuration in this repository then:
 
 * Get a [free Kpow Community license](https://factorhouse.io/kpow/community/)
@@ -26,11 +28,7 @@ docker run --network=kafka-local_default -p 3000:3000 -m2G --env-file ./resource
 docker run --network=kafka-local_default -p 3000:3000 -m2G --env-file ./resources/kpow/sasl-auth.env factorhouse/kpow-ce:latest
 ```
 
-* Navigate to http://localhost:3000
-
-(Your dashboard might look quite empty until you start creating topics and writing data..)
-
-![Kpow UI](/resources/img/kpow-overview.png)
+* Navigate to http://localhost:3000 (the Kpow UI might look empty until you start creating topics and writing data)
 
 ## Prerequisites
 
