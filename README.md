@@ -135,7 +135,7 @@ Then stop/clear the Docker Compose resources
  
 ### Access the Kafka cluster
 
-To access this cluster, you can:
+To access this cluster you can:
 
 1. Connect to the bootstrap on localhost / 127.0.0.1 (most likely non-docker applications)
 2. Connect to the bootstrap on the Docker defined hosts (kakfa-1, kafka-2, kafka-3)
