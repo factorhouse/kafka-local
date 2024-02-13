@@ -1,4 +1,4 @@
-# Run a local Kafka cluster with Docker Compose
+# Run local Kafka with Docker Compose
 
 ### Versions
 
