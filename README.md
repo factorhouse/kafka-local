@@ -122,9 +122,11 @@ canceled
 
 Then stop/clear the Docker Compose resources
 
-```bash
-❯ docker compose -f docker-compose-no-auth.yml down
+```
+docker compose -f docker-compose-no-auth.yml down
+```
 
+```
 [+] Running 5/0
  ✔ Container kafka-local-kafka-1-1  Removed                                                                                                                                                                    0.0s
  ✔ Container kafka-local-kafka-2-1  Removed                                                                                                                                                                    0.0s
