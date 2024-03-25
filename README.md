@@ -20,7 +20,7 @@
   * [Access the Kafka cluster](#access-the-kafka-cluster)
     * [Localhost bootstrap](#localhost-bootstrap)
     * [Docker host bootstrap](#docker-host-bootstrap)
-    * [host.docker.interanl bootstrap](#hostdockerinternal-bootstrap)
+    * [host.docker.interanal bootstrap](#hostdockerinternal-bootstrap)
 * [Run a SASL Kafka cluster (with authentication)](#run-a-sasl-kafka-cluster-with-authentication)
   * [Client authentication](#client-authentication)
 * [License](#license) 
