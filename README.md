@@ -4,7 +4,7 @@
 
 | Confluent Container Version   | Kafka Equivalent               |
 |-------------------------------|--------------------------------|
-| `confluentinc/cp-kafka:7.5.3` | `org.apache.kafka/kafka:3.5.2` |
+| `confluentinc/cp-kafka:7.6.0` | `org.apache.kafka/kafka:3.6.0` |
 
 ### Guide
 
