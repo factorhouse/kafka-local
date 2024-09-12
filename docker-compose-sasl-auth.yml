@@ -3,7 +3,7 @@ version: '2.1'
 services:
 
   zookeeper:
-    image: confluentinc/cp-zookeeper:7.6.0
+    image: confluentinc/cp-zookeeper:7.7.0
     container_name: zookeeper
     ports:
       - 2181:2181
@@ -15,7 +15,7 @@ services:
       - ./resources/docker:/etc/kafka/secrets
 
   kafka-1:
-    image: confluentinc/cp-kafka:7.6.0
+    image: confluentinc/cp-kafka:7.7.0
     ports:
       - "9092:9092"
     environment:
@@ -38,7 +38,7 @@ services:
       - ./resources/docker:/etc/kafka/secrets
 
   kafka-2:
-    image: confluentinc/cp-kafka:7.6.0
+    image: confluentinc/cp-kafka:7.7.0
     ports:
       - "9093:9093"
     environment:
@@ -61,7 +61,7 @@ services:
       - ./resources/docker:/etc/kafka/secrets
 
   kafka-3:
-    image: confluentinc/cp-kafka:7.6.0
+    image: confluentinc/cp-kafka:7.7.0
     ports:
       - "9094:9094"
     environment:
